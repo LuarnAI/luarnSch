@@ -1,10 +1,6 @@
+// Shared types and constants for the classroom tool application.
 
-export interface TimeSlot {
-  id: string;
-  name: string;
-  start: string; // HH:mm
-  end: string;   // HH:mm
-}
+export const DAYS_ZH = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
 
 export interface BroadcastTemplate {
   id: string;
@@ -13,39 +9,15 @@ export interface BroadcastTemplate {
   subtitle: string;
 }
 
-export interface TimetableData {
-  [day: number]: { [slotId: string]: string }; // day 0-6 (Sun-Sat), slotId: subject
-}
-
-export type ViewState = 'main' | 'broadcast' | 'settings';
-
-export const DAYS_ZH = ["週日", "週一", "週二", "週三", "週四", "週五", "週六"];
-
-/**
- * Added missing ViewType enum used in Header.tsx
- */
-export enum ViewType {
-  DASHBOARD = 'DASHBOARD',
-  CALCULATOR = 'CALCULATOR',
-  AI_ASSISTANT = 'AI_ASSISTANT'
-}
-
-/**
- * Added missing Course interface used in GradeCalculator, Dashboard, and AIAssistant
- */
-export interface Course {
+export interface TimeSlot {
   id: string;
   name: string;
-  credits: number;
-  score: number;
-  category: string;
+  start: string; // HH:mm format
+  end: string;   // HH:mm format
 }
 
-/**
- * Added missing Semester interface used in Dashboard and GradeCalculator
- */
-export interface Semester {
-  id: string;
-  title: string;
-  courses: Course[];
+export interface TimetableData {
+  [day: number]: {
+    [slotId: string]: string;
+  };
 }

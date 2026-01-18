@@ -4,71 +4,82 @@ import React from 'react';
 interface ToolbarProps {
   onOpenBroadcast: () => void;
   onOpenSettings: () => void;
+  onOpenTravel: () => void;
   onQuickAction: (title: string, sub: string) => void;
 }
 
-const Toolbar: React.FC<ToolbarProps> = ({ onOpenBroadcast, onOpenSettings, onQuickAction }) => {
+const Toolbar: React.FC<ToolbarProps> = ({ onOpenBroadcast, onOpenSettings, onOpenTravel, onQuickAction }) => {
   return (
-    <div className="p-4 bg-[#1e293b]/50 backdrop-blur-xl border-t border-white/5 flex items-center justify-between">
-      <div className="flex items-center gap-3">
-        <button 
-            className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-xl flex items-center justify-center transition-all"
-        >
-            <i className="fas fa-th-large text-slate-400"></i>
-        </button>
-
+    <div className="p-8 glass-texture border-t border-white/10 flex items-center justify-center depth-3d relative z-20">
+      <div className="flex items-center gap-4 flex-wrap justify-center">
         <button 
             onClick={onOpenBroadcast}
-            className="px-6 h-12 bg-pink-500 hover:bg-pink-600 rounded-xl flex items-center gap-3 transition-all font-bold"
+            className="px-8 h-16 bg-gradient-to-b from-pink-400 to-pink-600 rounded-2xl flex items-center gap-3 transition-all btn-3d font-black shadow-pink-900/40"
         >
-          <i className="fas fa-bullhorn"></i>
-          自訂廣播
+          <i className="fas fa-bullhorn text-xl"></i>
+          <span className="text-lg">自訂廣播</span>
         </button>
 
         <button 
-            onClick={() => onQuickAction("全班集合", "請立刻回到教室")}
-            className="px-6 h-12 bg-blue-600 hover:bg-blue-700 rounded-xl flex items-center gap-3 transition-all font-bold"
+            onClick={() => onQuickAction("去上課了", "下課才回來")}
+            className="px-6 h-16 bg-gradient-to-b from-blue-500 to-blue-700 rounded-2xl flex flex-col items-center justify-center transition-all btn-3d font-black shadow-blue-900/40"
         >
-          <i className="fas fa-right-to-bracket"></i>
-          回教室
+          <div className="flex items-center gap-2">
+            <i className="fas fa-person-walking-arrow-right text-lg"></i>
+            <span className="text-base">去上課了</span>
+          </div>
+          <span className="text-[10px] opacity-70 font-normal">下課才回來</span>
         </button>
 
         <button 
-            onClick={() => onQuickAction("走廊排隊", "安靜、迅速、確實")}
-            className="px-6 h-12 bg-orange-600 hover:bg-orange-700 rounded-xl flex items-center gap-3 transition-all font-bold"
+            onClick={() => onQuickAction("回家了", "明天才回來")}
+            className="px-6 h-16 bg-gradient-to-b from-orange-500 to-orange-700 rounded-2xl flex flex-col items-center justify-center transition-all btn-3d font-black shadow-orange-900/40"
         >
-          <i className="fas fa-arrow-right-from-bracket"></i>
-          走廊排隊
+          <div className="flex items-center gap-2">
+            <i className="fas fa-house-chimney text-lg"></i>
+            <span className="text-base">回家了</span>
+          </div>
+          <span className="text-[10px] opacity-70 font-normal">明天才回來</span>
         </button>
 
         <button 
-            onClick={() => onQuickAction("移動/集合", "請攜帶相關用具")}
-            className="px-6 h-12 bg-emerald-600 hover:bg-emerald-700 rounded-xl flex items-center gap-3 transition-all font-bold"
+            onClick={() => onQuickAction("打球去了", "下午才回來")}
+            className="px-6 h-16 bg-gradient-to-b from-emerald-500 to-emerald-700 rounded-2xl flex flex-col items-center justify-center transition-all btn-3d font-black shadow-emerald-900/40"
         >
-          <i className="fas fa-location-dot"></i>
-          移動/集合
+          <div className="flex items-center gap-2">
+            <i className="fas fa-basketball text-lg"></i>
+            <span className="text-base">打球去了</span>
+          </div>
+          <span className="text-[10px] opacity-70 font-normal">下午才回來</span>
         </button>
 
         <button 
-            className="px-6 h-12 bg-indigo-600 hover:bg-indigo-700 rounded-xl flex items-center gap-3 transition-all font-bold"
+            onClick={() => onQuickAction("開會去了", "請稍後再來訪")}
+            className="px-6 h-16 bg-gradient-to-b from-violet-500 to-violet-700 rounded-2xl flex flex-col items-center justify-center transition-all btn-3d font-black shadow-violet-900/40"
         >
-          <i className="fas fa-mug-hot"></i>
-          作息/狀態
+          <div className="flex items-center gap-2">
+            <i className="fas fa-users-rectangle text-lg"></i>
+            <span className="text-base">開會去了</span>
+          </div>
+          <span className="text-[10px] opacity-70 font-normal">請稍後再來訪</span>
+        </button>
+
+        <button 
+            onClick={onOpenTravel}
+            className="px-8 h-16 bg-gradient-to-b from-indigo-500 to-indigo-700 rounded-2xl flex items-center gap-3 transition-all btn-3d font-black shadow-indigo-900/40 border border-indigo-400/20"
+        >
+          <i className="fas fa-plane-departure text-xl"></i>
+          <span className="text-lg">出國了</span>
         </button>
       </div>
 
-      <div className="flex items-center gap-6 text-slate-400 px-4">
-        <div className="flex items-center gap-4 border-r border-white/10 pr-6">
-            <button className="hover:text-white transition-all"><i className="fas fa-clock text-xl"></i></button>
-            <button className="hover:text-white transition-all"><i className="fas fa-sun text-xl"></i></button>
-            <button className="hover:text-white transition-all"><i className="fas fa-cube text-xl"></i></button>
-            <button className="hover:text-white transition-all" onClick={() => document.documentElement.requestFullscreen()}><i className="fas fa-expand text-xl"></i></button>
-        </div>
+      <div className="absolute right-8 hidden md:flex items-center">
         <button 
             onClick={onOpenSettings}
-            className="w-12 h-12 flex items-center justify-center hover:bg-white/10 rounded-full transition-all"
+            title="系統設定"
+            className="w-14 h-14 flex items-center justify-center hover:bg-white/10 rounded-full transition-all border border-white/5 bg-white/2"
         >
-            <i className="fas fa-gear text-2xl"></i>
+            <i className="fas fa-gear text-2xl text-slate-400"></i>
         </button>
       </div>
     </div>
