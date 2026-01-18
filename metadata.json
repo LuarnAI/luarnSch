@@ -1,0 +1,5 @@
+{
+  "name": "Classroom Tool - 教室資訊看板與導控系統",
+  "description": "專為教室設計的看板工具，整合時鐘、課程進度、自動作息通知、自訂廣播功能，並提供完整的週一至週日課表管理系統。",
+  "requestFramePermissions": []
+}
